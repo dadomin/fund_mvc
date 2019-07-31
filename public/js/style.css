@@ -1,0 +1,1094 @@
+@charset "utf-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul,li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.in {
+	width: 100%;
+	position: relative;
+}
+
+.ds {
+	display: none;
+}
+
+.block {
+	display: block;
+}
+
+.size {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/*헤더설정*/
+header {
+	width: 100%;
+	height: 220px;
+	background-image: url("/images/logo-back.png");
+	background-repeat: repeat;
+	padding: 30px 300px;
+	position: relative;
+	z-index: 100;
+}
+header > a > img {
+	width: 320px;
+	position: absolute;
+	top: 20px;
+}
+header > img {
+	position: absolute;
+	top: 30px;
+	right: 300px;
+	width: 230px;
+}
+/*헤더 로그인메뉴*/
+#login-menu {
+	position: absolute;
+	bottom: 55px;
+}
+#login-menu > li {
+	float: left;
+}
+#login-menu > li > a {
+	font-size: 16px;
+	color: #2292d1;
+	font-weight: bold;
+}
+#login-menu > .line {
+	margin: 0 15px;
+	font-size: 16px;
+	color: #333; 
+	font-weight: bold;
+}
+header > .des {
+	position: absolute;
+	bottom: 15px;
+	font-size: 21px;
+	color: #333;
+	font-weight: 400;
+}
+.des > a {
+	color: #2292d1;
+	font-size: 28px;
+}
+.des > span {
+	font-size: 16px;
+}
+
+/*네비게이션 메뉴*/
+#menubar {
+	width: 100%;
+	height: 55px;
+	background-color: #fff;
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	box-shadow: 0 0 15px #eee;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+#menubar > li {
+	margin: 0 18px;
+}
+#menubar > li > a{
+	font-weight: bold;
+	color: #555;
+}
+#menubar > li > a:hover {
+	transition: .3s;
+	color: #2292d1;
+}
+
+#menubar > li > .clicked {
+	color: #2292d1;
+}
+
+/*푸터*/
+footer {
+	width: 100%;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+}
+footer .footer-boxes {
+	width: 100%;
+	height: 250px;
+	background-color: #333;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 35px 300px 0px 300px;
+}
+.footer-box {
+	flex: 1;
+	text-align: center;
+}
+.footer-box > h3 {
+	font-size: 24px;
+}
+.footer-box > .footer-line {
+	width: 50px;
+	height: 3px;
+	border: none;
+	background-color: #2292d1;
+	margin: 15px auto;
+}
+.footer-box > p {
+	font-size: 16px;
+	line-height: 1.7;
+}
+.footer-under {
+	width: 100%;
+	height: 50px;
+	background-color: #222;
+	text-align: center;
+}
+.footer-under > p {
+	line-height: 50px;
+	color: #777;
+}
+
+/*메인비쥬얼*/
+#main {
+	width: 100%;
+	height: 400px;
+}
+.mainsize {
+	position: relative;
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	padding-top: 80px;
+}
+.mainsize > p {
+	font-size: 18px;
+	line-height: 1.7;
+	margin-bottom: 15px;
+}
+.mainsize > h2 {
+	font-size:  54px;
+	letter-spacing: -2px;
+	color: #333;
+	margin-bottom: 30px;
+}
+.mainsize > button {
+	width: 300px;
+	height: 55px;
+	border: 2px solid #333;
+	color: #fff;
+	background-color: #333;
+	text-align: center;
+	line-height: 55px;
+	border-radius: 12px;
+	cursor: pointer;
+	font-size: 18px;
+}
+.mainsize > button:hover {
+	transition: .4s;
+	color: #333;
+	background-color: #fff;
+}
+.mainsize > img {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/*펀드랭킹*/
+#main-fund {
+	width: 100%;
+}
+.fund-title {
+	margin-top: 50px;
+	text-align: center;
+}
+.fund-title > h3 {
+	color: #555;
+	font-size: 32px;
+}
+.fund-title > p {
+	color: #333;
+	font-size: 18px;
+	margin: 12px 0;
+}
+.fund-title > .fund-line {
+	width: 150px;
+	height: 3px;
+	background-color: #2292d1;
+	border: none;
+	margin: 30px auto;
+}
+.fund-ranking {
+	width: 1300px;
+	height: 380px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 50px auto;
+}
+.ranking {
+	width: 300px;
+	height: 100%;
+	background-color: #fff;
+	box-shadow: 0 0 15px #ddd;
+	border-radius: 12px;
+	position: relative;
+	padding: 0 20px;
+}
+.ranking > button {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	border: none;
+	background-color: #2292d1;
+	color: #fff;
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+	cursor: pointer;
+}
+.ranking > h3 {
+	margin-bottom: 5px;
+}
+.ranking > p {
+	text-align: right;
+	line-height: 1.7;
+}
+.ranking > p > span {
+	float: left;
+	border-right: 1px solid #2292d1;
+	width: 100px;
+	height: 20px;
+	text-align: left;
+}
+.ranking > canvas {
+	margin-left: 30px;
+}
+
+/*펀드보기*/
+#fund-view {
+	width: 100%;
+	padding: 50px 0;
+}
+.view-title > h3 {
+	text-align: center;
+	font-size: 34px;
+	font-weight: 400;
+	margin-bottom: 15px;
+}
+.view-title > p {
+	line-height: 1.4;
+	color: #2292d1;
+	font-size: 21px;
+	font-weight: 500;
+}
+.view-title > p > #cnt {
+	font-size: 54px;
+	font-weight: bold;
+}
+.view-title > p:nth-of-type(2){
+	color: #333;
+	font-size: 18px;
+}
+.view-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
+}
+.view-form > .list {
+	width: 100%;
+	height: 330px;
+	background-color: #fff;
+	box-shadow: 0px 0px 15px #ddd;
+	margin-bottom: 30px;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 20px;
+	padding-left: 15px;
+}
+.list.owner-line {
+	border: 1px solid #2292d1;
+}
+.list.owner-done {
+	border: 1px solid #ff1b00;
+}
+.list-title {
+	width: 100%;
+	height: 100px;
+	padding-top: 20px; 
+	padding-left: 30px;
+	position: relative;
+}
+
+.list-status {
+	width: 100px;
+	height: 30px;
+	background-color: #eee;
+	border-radius: 15px;
+	text-align: center;
+	line-height: 30px;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+.list-status.list-status-done {
+	background-color: #fff;
+	border: 1px solid #ff1b00;
+	color: #ff1b00;
+	cursor: pointer;
+}
+.list-views {
+	width: 100%;
+	height: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.list-views > div {
+	flex: 1;
+	text-align: center;
+	padding-top: 20px;
+}
+.list-views > div > h3 {
+	color: #333;
+	font-size: 21px;
+}
+.list-views > div > .list-line {
+	width: 50px; 
+	height: 3px;
+	background-color: #2292d1;
+	border: none;
+	margin: 20px auto;
+}
+.list-views > div > p {
+	color: #2292d1;
+	font-size: 18px;
+}
+.list-btns {
+	width: 100%;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.list-btns > button {
+	height: 30px;
+	padding: 0 15px;
+	border: 1px solid #2292d1;
+	background-color: #fff;
+	color: #2292d1;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 12px;
+	cursor: pointer;
+	margin-right: 20px;
+}
+.list-btns > button:hover {
+	transition: .4s;
+	background-color: #2292d1;
+	color: #fff;
+}
+/*투자자목록*/
+#fund-investor {
+	width: 100%;
+	padding: 50px 0;
+}
+.investor-title {
+	position: relative;
+	width: 100%;
+}
+.investor-title > h3 {
+	text-align: center;
+	font-size: 34px;
+	font-weight: 400;
+	margin-bottom: 15px;
+}
+.investor-title > p {
+	line-height: 1.4;
+	color: #2292d1;
+	font-size: 21px;
+	font-weight: 500;
+}
+.investor-title > p > #incnt {
+	font-size: 54px;
+	font-weight: bold;
+}
+.investor-title > p:nth-of-type(2){
+	color: #333;
+	font-size: 18px;
+}
+.investor-title > #ivs {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 160px;
+	height: 35px;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #000;
+	font-size: 18px;
+}
+
+.investor-form-title {
+	width: 100%;
+	height: 50px;
+	margin-bottom: 30px;
+	margin-top: 50px;
+	border-bottom: 1px solid #000;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.investor-form-title > h3 {
+	flex: 1;
+	text-align: center;
+	line-height: 50px;
+	font-weight: 400;
+}
+.investor-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
+}
+.investor {
+	width: 100%;
+	height: 60px;
+	background-color: #fff;
+	box-shadow: 0px 0px 10px #ddd;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-radius: 12px;
+	margin-bottom: 15px;
+}
+.investor:hover {
+	background-color: #f9f9f9;
+}
+.investor > div {
+	flex: 1;
+	text-align: center;
+	line-height: 60px;
+}
+.investor > div > canvas {
+	margin-top: 17px;
+	margin-right: 5px;
+	float: left;
+}
+.investor > div > span {
+	margin-left: 5px;
+	float: left;
+}
+
+
+/*페이지네이션*/
+.pagenation-bar {
+	width: 100%;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.pagenation {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+}
+.pagenation > li {
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	border: 1px solid #2292d1;
+	text-align: center;
+	line-height: 30px;
+	margin: 30px 1px;
+}
+.pagenation > li > a {
+	width: 100%;
+	height: 100%;
+	border:none;
+	background: none;
+	color: #2292d1;
+	display: block;
+}
+
+/*펀드등록*/
+#fund-adapt {
+	width: 100%;
+	height: 1000px;
+	background-image: url("/images/background.png");
+	background-position: center center;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.adapt-form {
+	width: 480px;
+	height: 800px;
+	background-color: #fff;
+	box-shadow: 0px 0px 15px #ddd;
+	border-radius: 12px;
+	position: relative;
+}
+.adapt-title {
+	width: 100%;
+	height: 70px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+.adapt-title > h2 {
+	line-height: 70px;
+	font-size: 34px;
+	font-weight: 400;
+}
+.adapt {
+	width: 350px;
+	margin: 20px auto;
+}
+.adapt > h3 {
+	font-size: 21px;
+	font-weight: 600;
+	margin-bottom: 15px; 
+}
+.adapt > input {
+	width: 100%;
+	height: 30px;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #2292d1;
+}
+.adapt > textarea {
+	width: 100%;
+	height: 80px;
+	resize: none;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #2292d1;
+}
+.adapt-form > button {
+	width: 300px;
+	height: 50px;
+	border: none;
+	background-color: #00cdf0;
+	color: #fff;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/*회원가입*/
+#fund-register {
+	width: 100%;
+	height: 900px;
+	background-image: url("/images/background.png");
+	background-position: center center;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.register-form {
+	width: 480px;
+	height: 520px;
+	background-color: #fff;
+	box-shadow: 0px 0px 15px #ddd;
+	border-radius: 12px;
+	position: relative;
+}
+.register-title {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	padding-top: 10px;
+}
+.register-title > h2 {
+	font-size: 34px;
+	font-weight: 400;
+	margin-bottom: 5px;
+}
+.register-title > p {
+	font-size: 18px;
+}
+.register {
+	width: 350px;
+	margin: 20px auto;
+}
+.register > input {
+	width: 100%;
+	height: 30px;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #2292d1;
+}
+.register-form > button {
+	width: 300px;
+	height: 50px;
+	border: none;
+	background-color: #00cdf0;
+	color: #fff;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/*로그인*/
+#fund-login {
+	width: 100%;
+	height: 900px;
+	background-image: url("/images/background.png");
+	background-position: center center;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.login-form {
+	width: 480px;
+	height: 380px;
+	background-color: #fff;
+	box-shadow: 0px 0px 15px #ddd;
+	border-radius: 12px;
+	position: relative;
+}
+.login-title {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	padding-top: 10px;
+}
+.login-title > h2 {
+	font-size: 34px;
+	font-weight: 400;
+	margin-bottom: 5px;
+}
+.login-title > p {
+	font-size: 18px;
+}
+.login {
+	width: 350px;
+	margin: 20px auto;
+}
+.login > input {
+	width: 100%;
+	height: 30px;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #2292d1;
+}
+.login-form > button {
+	width: 300px;
+	height: 50px;
+	border: none;
+	background-color: #00cdf0;
+	color: #fff;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/*토스트얼럿*/
+.toast-back {
+	width: 300px;
+	height: auto;
+	max-height: 95vh;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	z-index: 500;
+}
+.toast {
+	width: 100%;
+	padding: 25px 20px;
+	background-color: #2292d1;
+	border-radius: 21px;
+	position: relative;
+	color: #fff;
+	margin-top: 5px;
+}
+.toast > #close {
+	position: absolute;
+	top: 5px;
+	right: 15px;
+	cursor: pointer;
+	font-size: 24px;
+}
+.toast > p {
+	text-align: left;
+	font-size: 18px;
+}
+/*팝업창*/
+.back {
+	width: 100%;
+	position: relative;
+	z-index: 400;
+}
+.pop {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+.up {
+	width: 600px;
+	height: auto;
+	padding: 50px 40px;
+	background-color: #fff;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);	
+}
+.up > #pop-close {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	color: #333;
+	font-size: 32px;
+	cursor: pointer;
+}
+.up-in {
+	width: 100%;
+	height: 30px;
+	margin-bottom: 10px;
+	text-align: right;
+	padding: 0 30px;
+}
+.in-left {
+	float: left;
+	width: 100px;
+	border-right: 1px solid #2292d1;
+	text-align: left;
+}
+.in-title {
+	width: 100%;
+	margin: 15px 0;
+	text-align: center;
+}
+.in-title > h3 {
+	color: #333;
+	font-size: 21px;
+}
+.in-title > .in-line {
+	width: 30px;
+	height: 2px;
+	border: none;
+	background-color: #2292d1;
+	margin: 15px auto;
+}
+.in-form-title {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid #000;
+	margin-top: 10px;
+}
+.in-form-title > div {
+	flex: 1;
+	text-align: center;
+}
+.in-form  {
+	width: 100%;
+	height: auto;
+	max-height: 400px;
+	overflow-y: scroll;
+}
+.in-form > div {
+	width: 90%;
+	box-shadow: 0px 0px 15px #aaa;
+	margin: 15px auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.in-form > .investor > div {
+	text-align: center;
+	flex: 1;
+}
+.up-sign {
+	width: 100%;
+	margin-bottom: 10px;
+	text-align: right;
+	padding: 0 30px;
+}
+.up-sign > canvas {
+	border: 1px solid #2292d1;
+}
+.up-sign > .btns {
+	flex: right;
+}
+.btns > button {
+	width: 50px;
+	height: 30px;
+	background-color: #2292d1;
+	color: #fff;
+	border: 1px solid #2292d1;
+	border-radius: 12px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.up-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height:45px;
+}
+.up-btns > button {
+	width: 65px;
+	height: 100%;
+	margin: 0 5px;
+	border-radius: 12px;
+	background-color: #fff;
+	cursor: pointer;
+}
+.lookfunding {
+	border: 1px solid #2292d1;
+	color: #2292d1;
+}
+.lookcancle {
+	border : 1px solid #f00;
+	color: #f00;
+}
+.up-in > input {
+	width: 300px;
+	height: 100%;
+	background-color: fff;
+	border: 1px solid #2292d1;
+	color: #333;
+	padding: 0 10px;
+}
+.outline {
+	outline: 2px solid #f00;
+}
+
+
+/*프로필*/
+#profile {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.profile_size {
+	width: 800px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 50px auto;
+}
+.fundbox {
+	width: 100%;
+}
+.investbox {
+	width: 100%;
+}
+.profile_title {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px auto;
+}
+.profile_title > h3 {
+	color: #333;
+	font-size: 32px;
+}
+.profile_title > .profile_line {
+	width: 100px;
+	height: 3px;
+	border: none;
+	background-color: #2292d1;
+	margin: 20px auto;
+}
+.profile_title > p {
+	color: #555;
+	font-size: 16px;
+	margin-bottom: 30px;
+}
+.profile_box {
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0px 0px 15px #ddd;
+	border-radius: 8px;
+	padding-bottom: 30px;
+	margin-bottom: 40px;
+}
+.profile_box_title {
+	width: 750px;
+	margin: 0 auto;
+	height: 70px;
+	border-bottom: 1px solid #eee;
+	padding-left: 50px;
+	margin-bottom: 30px;
+	position: relative;
+}
+.profile_box_title > h3 {
+	color: #002758;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 80px;
+}
+.profile_box_title > span {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #2292d1;
+	font-size: 24px;
+}
+.profile_notice {
+	width: 650px;
+	margin: 12px auto;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 25px;
+}
+.profile_left {
+	flex: 1;
+}
+.profile_left > p {
+	color: #333;
+	font-size: 18px;
+	font-weight: 600;
+}
+.profile_left > p > span {
+	color: #00c1cc;
+}
+.profile_right {
+	flex: 2;
+}
+.profile_right > p {
+	color: #555;
+	font-weight: 400;
+}
+
+/*반응형*/
+@media (max-width: 480px) {
+	body {
+		width: 480px;
+	}
+	header {
+		padding: 30px 25px; 
+	}
+	header > img {
+		display: none;
+	}
+	footer .footer-boxes {
+		padding: 35px 20px 0 20px;
+	}
+	.size {
+		width: 400px;
+	}
+	#main {
+		height: 700px;
+		text-align: center;
+	}
+	.mainsize {
+		width: 400px;
+	}
+	.mainsize > img {
+		width: 350px;
+		top: 80%;
+		right: 50%;
+		transform: translate(50%, -50%);
+	}
+	.fund-ranking {
+		width: 100%;
+		height: 1600px;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.ranking {
+		margin-bottom: 15px;
+	}
+	.view-form > .list {
+		height: 850px;
+		position: relative;
+	}
+	.list-views {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		display: block;
+	}
+	.list-views > canvas {
+		margin-left: 100px;
+	}
+	.list-btns {
+		position: absolute;
+		bottom: 20px;
+		justify-content: center;
+	}
+	.investor-form-title > h3 {
+		font-size: 16px;
+	}
+	.investor {
+		height: 350px;
+		flex-direction: column;
+	}
+	.investor > div {
+		font-size: 18px;
+	}
+	.investor > div > canvas {
+		margin-left: 100px;
+	}
+}
