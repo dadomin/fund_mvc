@@ -50,8 +50,6 @@ class ViewController extends MasterController {
 	}
 
 	public function done() {
-		error_reporting(E_ALL);
-		ini_set('display_errors', 1);
 
 		$num = $_GET["num"];
 
@@ -67,5 +65,55 @@ class ViewController extends MasterController {
 		// $list3 = DB::fetch($sql3, [$list3->current, $list3->owner]);
 
 		DB::msgAndBack("모집완료된 펀드가 사업으로 추가되었습니다.");
+	}
+
+	public function goDone() {
+		$num = $_GET["num"];
+		
+		$sql = "SELECT investor.email, investor.pay FROM investor WHERE investor.fundnumber = ?";
+		$list = DB::fetchAll($sql, [$num]);
+
+		// echo "<prev>";
+		// var_dump($list);
+		// echo "</prev>";
+
+		foreach ($list as $item) {
+			var_dump($item->email);
+			// UPDATE `userlist` SET userlist.money = userlist.money + 140 WHERE userlist.email = "asdf"
+			$sql2 = "UPDATE `userlist` SET userlist.money = userlist.money + ? WHERE userlist.email = ?";
+			$list2 = DB::query($sql2, [$item->pay,$item->email]);
+		}
+
+		// $sql3 = "DELETE FROM `fundlist` WHERE fundlist.number = ?";
+		// $list3 = DB::fetch($sql3, [$num]);
+
+		DB::msgAndBack("해당 펀드가 모집해제되어 해당 투자금이 반환되었습니다.");
+	}
+
+	public function funding() {
+		$user = $_SESSION['user'];
+		if(!$user){
+			DB::msgAndBack("접근권한이 없습니다.");
+		}
+
+		$num = $_GET['num'];
+		$pay = $_GET['pay'];
+		
+		$now = date("Y-m-d H:i:s");
+
+		$sql2 = "SELECT * FROM investor WHERE fundnumber = ? AND email =?";
+		$list2 = DB::fetch($sql2, [$num, $user->email]);
+
+		if(!$list2){
+			$sql = "INSERT INTO `investor`(`fundnumber`, `email`, `pay`, `datetime`, `username`) VALUES (?,?,?,?,?)";
+			$list = DB::query($sql, [$num, $user->email, $pay, $now, $user->name]);
+		}else {
+			$sql3 = "UPDATE `investor` SET `pay` = `pay` + ?, `datetime` = ? WHERE `fundnumber` = ? AND `email` = ?";
+			$list3 = DB::query($sql3, [$pay, $now, $num, $user->email]);
+		}
+
+		
+		DB::msgAndGo("정상적으로 투자가 완료되었습니다.", "/list");
+
 	}
 }

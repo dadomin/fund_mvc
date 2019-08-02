@@ -364,6 +364,12 @@ footer .footer-boxes {
 	color: #ff1b00;
 	cursor: pointer;
 }
+.list-status.list-status-go-done {
+	background-color: #fff;
+	border: 1px solid #2292d1;
+	color: #2292d1;
+	cursor: pointer;
+}
 .list-views {
 	width: 100%;
 	height: 200px;

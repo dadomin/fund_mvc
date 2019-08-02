@@ -31,6 +31,9 @@ class List {
 				<canvas width="150" height="30"></canvas>
 				<span>${percent}%</span>
 			</div>
+			<div>
+				<button>투자펀드계약서</button>
+			</div>
 		`
 		return temp;
 	}

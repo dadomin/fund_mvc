@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas style="border: 1px solid #000"></canvas>
+
+	<script>
+		let canvas = document.querySelector("canvas");
+		let ctx = canvas.getContext("2d");
+		canvas.width = 400;
+		canvas.height = 150;
+
+		let isDrawing = false;
+		let prevX = null;
+		let prevY = null;
+
+		canvas.addEventListener("mousedown", (e) => {
+			prevX = e.offsetX;
+			prevY = e.offsetY;
+			isDrawing = true;
+		});
+
+		canvas.addEventListener("mousemove", (e) => {
+			drawSign(ctx, e.offsetX, e.offsetY);
+
+			prevX = e.offsetX;
+			prevY = e.offsetY;
+		});
+
+		document.querySelector("body").addEventListener("mouseup", (e) => {
+			isDrawing = false;
+			damin_pig();
+		});
+
+		function drawSign(ctx, x, y){
+			if(!isDrawing) return false;
+
+			let w = canvas.width;
+			let h = canvas.height;
+
+			let px = prevX;
+			let py = prevY;
+
+			ctx.beginPath();
+			ctx.strokeStyle = "#000";
+			ctx.moveTo(px, py);
+			ctx.lineTo(x,y);
+			ctx.lineWidth= 1;
+			ctx.stroke();
+			ctx.closePath();
+		}
+
+		function damin_pig() {
+			let canvas = document.createElement("canvas");
+			let ctx = canvas.getContext("2d");
+			canvas.width = 793;
+			canvas.height = 495;
+
+			let bgImage = new Image();
+			bgImage.addEventListener("load", () => {
+				ctx.drawImage(bgImage, 0, 0, 793, 495);
+
+				let link = document.createElement("a");
+				link.href = bgImage.src;
+	        	link.download = 'download.png';
+	        	link.click();
+			});
+			bgImage.src = "funding.png";
+		}
+	</script>
+</body>
+</html>

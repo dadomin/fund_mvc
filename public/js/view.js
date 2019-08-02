@@ -14,6 +14,7 @@ class View {
 		this.drawed = false;
 		this.signstauts = true;
 
+		this.success = false;
 
 		this.viewForm = document.querySelector(".view-form");
 
@@ -45,12 +46,13 @@ class View {
 			console.log(listboxes);
 			for(let i = 0; i < listboxes.length; i++){
 				let owner = listboxes[i].querySelector(".view-owner").innerHTML;
-				let percnet = listboxes[i].querySelector(".view-percnet").innerHTML;
+				let percent = listboxes[i].querySelector(".view-percent").innerHTML;
 				let fundnumber = listboxes[i].querySelector(".view-fundnumber").innerHTML;
+				let date = listboxes[i].querySelector(".view-enddate").innerHTML;
 				if(owner == this.user.name){
 					listboxes[i].classList.add("owner-line");
 				}
-				if(owner == this.user.name && percnet == 100) {
+				if(owner == this.user.name && percent == 100) {
 					listboxes[i].classList.remove("owner-line");
 					listboxes[i].classList.add("owner-done");
 					listboxes[i].querySelector(".list-status").innerHTML = "완료";
@@ -58,6 +60,13 @@ class View {
 					listboxes[i].querySelector(".list-status").addEventListener("click", (e)=>{
 						this.doneFund(e.target, fundnumber);
 					});
+				}
+				if(owner == this.user.name && new Date(date) < new Date() && percent < 100) {
+					listboxes[i].querySelector(".list-status").innerHTML = "모집해제";
+					listboxes[i].querySelector(".list-status").classList.add("list-status-go-done");
+					listboxes[i].querySelector(".list-status").addEventListener("click", (e)=>{
+						this.goDone(e.target, fundnumber);
+					})
 				}
 			}
 		}else {
@@ -141,14 +150,16 @@ class View {
 			let pevalue = 0;
 			back.querySelector(".checkpay").addEventListener("input", (e)=>{
 				console.log(e.target);
-				if(e.target.value > list[cnt].total){
+				if(parseInt(e.target.value) > parseInt(list[cnt].total)){
 					console.log("초과");
 					e.target.classList.add("outline");
 					e.target.value = pevalue;
 					app.toast("입력하신 금액이 총 모집금액을 초과하였습니다.")
+					this.success = false;
 					return;
 				}else {
 					e.target.classList.remove("outline");
+					this.success = true;
 				}
 				pevalue = e.target.value;
 			});
@@ -160,26 +171,54 @@ class View {
 				if(this.drawed == false){
 					app.toast("서명을 하지 않으셨습니다.");
 					back.querySelector("canvas").classList.add("outline");
+					this.success = false;
 				}else {
 					back.querySelector("canvas").classList.remove("outline");
+					this.success = true;
 				}
 				let checkpay = document.querySelector(".checkpay");
 				if(checkpay.value == "" || checkpay.value === undefined){
 					app.toast("투자금액을 입력하지 않으셨습니다.")
 					checkpay.classList.add("outline");
+					this.success = false;
 					return;
 				}else {
 					checkpay.classList.remove("outline");
+					this.success = true;
 				}
 				if(checkpay.value < 0 || parseInt(checkpay.value) - checkpay.value != 0){
 					app.toast("투자금액은 자연수만 입력하실 수 있습니다.");
 					checkpay.classList.add("outline");
+					this.success = false;
 				}else {
 					checkpay.classList.remove("outline");
+					this.success = true;
+				}
+
+				if(this.success == true) {
+					console.log("제대로 되었도다");
+					this.fundingDone(back);
 				}
 			});
 		});
 		
+	}
+
+	fundingDone(e) {
+		let num = e.querySelector(".num").innerHTML;
+		let pay = e.querySelector(".checkpay").value;
+
+		location.href = "/view/funding?num=" + num + "&pay=" + pay;
+	}
+
+	goDone(x, number) {
+		console.log(number);
+		console.log(x.innerHTML);
+		let parent = x.parentNode.parentNode;
+		console.log(parent);
+		// parent.parentNode.removeChild(parent);
+		// $(parent).fadeOut('linear');
+		location.href = "/view/godone?num=" + number;
 	}
 
 	doneFund(x, number) {
@@ -252,7 +291,7 @@ class View {
 					<div>
 						<h3>모집마감일</h3>
 						<div class="list-line"></div>
-						<p>${data.endDate}</p>
+						<p class="view-enddate">${data.endDate}</p>
 					</div>
 					<div>
 						<h3>모집금액</h3>
@@ -267,7 +306,7 @@ class View {
 					<div>
 						<h3>모집율</h3>
 						<div class="list-line"></div>
-						<p><span class="view-percnet">${data.current / data.total * 100}</span>%</p>
+						<p><span class="view-percent">${data.current / data.total * 100}</span>%</p>
 					</div>
 					<div>
 						<h3>펀드등록자</h3>
@@ -293,15 +332,15 @@ class View {
 				<span id="pop-close">&times</span>
 				<div class="up-in">
 					<div class="in-left">펀드번호</div>
-					${data.number}
+					<p class="num">${data.number}</p>
 				</div>
 				<div class="up-in">
 					<div class="in-left">창업펀드명</div>
-					${data.name}
+					<p class="name">${data.name}</p>
 				</div>
 				<div class="up-in">
 					<div class="in-left">투자자명</div>
-					<input type="text" disabled readonly value = "홍길동">
+					<input type="text" class="invname" disabled readonly value = "${this.user.name}">
 				</div>
 				<div class="up-in">
 					<div class="in-left">투자금액</div>

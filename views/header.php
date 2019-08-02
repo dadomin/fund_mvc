@@ -33,10 +33,16 @@
 				<li class="line"><i class="fas fa-caret-right"></i></li>
 				<li><a href="/manager" data-target="master">관리자</a></li>
 			</ul>
-			<?php if(isset($_SESSION['user'])) : ?>
+
+			<?php if($_SESSION['user']->email == "admin") : ?>
+				<p class="des">
+						<a href="/manager"><?= $_SESSION['user']->name ?></a> 님, 킥스타터가 안전하게 보호되는 중입니다.
+				</p>
+			<?php elseif(isset($_SESSION['user'])) : ?>
 				<p class="des">
 						<a href="/profile"><?= $_SESSION['user']->name ?></a> 님<span>(보유금액 : <?= $_SESSION['user']->money ?>원)</span>, 킥스타터에서 펀드를 등록하고 투자해보세요.
 				</p>
+
 			<?php else : ?>
 				<p class="des">
 					안녕하세요, 킥스타터에 오신 것을 환영합니다.

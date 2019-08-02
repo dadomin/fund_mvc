@@ -14,6 +14,8 @@ Route::get("/view", "ViewController@view");
 Route::get("/view/load", "ViewController@viewLoad");
 Route::get("/view/look", "ViewController@viewLook");
 Route::get("/view/done", "ViewController@done");
+Route::get("/view/godone", "ViewController@goDone");
+Route::get("/view/funding", "ViewController@funding");
 
 Route::get("/list", "ListController@list");
 Route::get("/list/load", "ListController@listLoad");
