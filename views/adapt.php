@@ -22,7 +22,7 @@
 				</div>
 				<div class="adapt">
 					<h3>상세설명</h3>
-					<textarea class="adapt-text"cols="30" rows="10" placeholder="500자 이내로 입력하세요."></textarea>
+					<textarea class="adapt-text"cols="30" rows="10" placeholder="500자 이내로 입력하세요." name="sub"></textarea>
 				</div>
 				<div class="adapt">
 					<h3>펀드이미지</h3>

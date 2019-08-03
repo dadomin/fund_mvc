@@ -32,3 +32,4 @@ Route::post("/login/success", "LoginController@success");
 Route::get("/profile", "LoginController@profile");
 
 Route::get("/manager", "ManagerController@index");
+Route::get("/manager/delete","ViewController@goDone");

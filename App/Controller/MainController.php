@@ -68,15 +68,3 @@ class MainController extends MasterController {
 
 	}
 }
-
-// SELECT * FROM fundlist AS f, investor AS i 
-// WHERE f.number = i.fundnumber AND f.number = 'A0001'
-
-// 펀드별
-// SELECT * FROM `fundlist` AS f, `investor` AS i WHERE f.number = i.fundnumber
-
-// 개인별
-// SELECT * FROM `fundlist` AS f, `investor` AS i WHERE f.number = i.fundnumber ORDER BY i.email
-
-// 최근등록별
-// SELECT * FROM `fundlist` AS f, `investor` AS i WHERE f.number = i.fundnumber ORDER BY i.datetime DESC

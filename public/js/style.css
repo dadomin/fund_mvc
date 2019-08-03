@@ -812,6 +812,15 @@ footer .footer-boxes {
 	text-align: right;
 	padding: 0 30px;
 }
+.up-sb {
+	width: 300px;
+	height: 100%;
+	resize: none;
+	background-color: #fff;
+	border: 1px solid #2292d1;
+	text-align: right;
+	padding: 2px;
+}
 .in-left {
 	float: left;
 	width: 100px;
@@ -1023,6 +1032,174 @@ footer .footer-boxes {
 .profile_right > p {
 	color: #555;
 	font-weight: 400;
+}
+
+/*관리자 모드*/
+.users-money {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 20px 60px;
+	background-color: #fff;
+	box-shadow: 0px 0px 12px rgba(0,0,0,0.1);
+	border-radius: 12px;
+	margin-bottom: 50px;
+}
+.users-count {
+	flex: 1;
+	text-align: center;
+	color: #555;
+}
+.users-count > h3 {
+	text-align: center;
+	font-weight: 400;
+	font-size: 24px;
+	margin-bottom: 12px; 
+}
+.users-count > p {
+	font-weight: 600;
+	font-size: 48px;
+	color: #2292d1;
+}
+.users-count > p > span {
+	font-weight: 400;
+	font-size: 32px;
+	color: #555;
+}
+.users {
+	flex: 1;
+	text-align: center;
+	color: #555;
+}
+.users > h3 {
+	font-weight: 400;
+	font-size: 24px;
+	margin-bottom: 12px;
+}
+.users > p {
+	font-weight: 600;
+	font-size: 48px;
+	color: #2292d1;
+}
+.users > p > span {
+	font-weight: 400;
+	font-size: 32px;
+	color: #555;
+}
+.fund_avg {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 50px;
+	border-radius: 12px;
+}
+.fund_avg > canvas {
+	border-radius: 12px;
+}
+.fund_avg > h3 {
+	font-weight: 400;
+	font-size: 24px;
+	margin-bottom: 12px;
+}
+.fund_avg > p {
+	font-weight: 400;
+	font-size: 24px;
+	color: #555;
+}
+.fund_avg > p > span{
+	font-weight: 600;
+	font-size: 36px;
+	margin-bottom: 12px;
+	color: #2292d1;
+}
+.manage-boxes {
+	width: 100%;
+	height: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 50px;
+}
+.manage-box {
+	background-color: #fff;
+	box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+	flex: 1;
+	height: 100%;
+	margin: 0 15px;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.manage-box > h3 {
+	color: #333;
+	font-size: 21px;
+	font-weight: 400;
+}
+.manage-box > .manage-line {
+	width: 30px;
+	height: 2px;
+	border: none;
+	background-color: #2292d1;
+	margin: 15px auto;
+}
+.manage-box > p {
+	font-size: 32px;
+	font-weight: 600;
+	color: #2292d1;
+}
+.manage-box > p > span {
+	font-size: 21px;
+	font-weight: 400;
+	color: #555;
+}
+.fund_list_box {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.fund_list_box > h3 {
+	text-align: center;
+	font-weight: 400;
+	font-size: 24px;
+	color: #555;
+	margin: 12px auto;
+}
+.fund_list {
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	box-shadow: 0px 0px 12px rgba(0,0,0,0.1);
+	text-align: center;
+	border-radius: 12px;
+}
+.fund_list > * {
+	text-align: center;
+	flex: 1;
+}
+.fund_list > .delete_fund {
+	width: 50px;
+	height: 30px;
+	background-color: #fff;
+	border: 1px solid #ff1b00;
+	color: #ff1b00;
+	border-radius: 12px;
+	cursor: pointer;
+	margin: 0 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /*반응형*/

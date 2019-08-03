@@ -232,6 +232,8 @@ class View {
 	}
 
 	makeRankLook(data){
+		let sub = data.sub;
+		if(sub == "" || sub === undefined) sub = "상세설명이 비워져있습니다.";
 		let temp = `
 			<div class="pop"></div>
 			<div class="up">
@@ -259,6 +261,10 @@ class View {
 				<div class="up-in">
 					<div class="in-left">펀드등록자</div>
 					<a href="/profile?id=${data.owner}" style="color: #2292d1; font-weight:bold"> ${data.owner} </a>
+				</div>
+				<div class="up-in">
+					<div class="in-left">상세설명</div>
+					<textarea readonly disabled class="up-sb">${sub}</textarea>
 				</div>
 				<div class="in-title">
 					<h3>투자자목록</h3>

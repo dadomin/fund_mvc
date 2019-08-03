@@ -34,7 +34,7 @@
 				<li><a href="/manager" data-target="master">관리자</a></li>
 			</ul>
 
-			<?php if($_SESSION['user']->email == "admin") : ?>
+			<?php if(isset($_SESSION['user']) && $_SESSION['user']->email == "admin") : ?>
 				<p class="des">
 						<a href="/manager"><?= $_SESSION['user']->name ?></a> 님, 킥스타터가 안전하게 보호되는 중입니다.
 				</p>

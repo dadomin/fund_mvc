@@ -20,8 +20,7 @@ class ViewController extends MasterController {
 		if(isset($_SESSION['user'])) {
 			$user = $_SESSION['user'];
 		}
-		// var_dump($user);
-		// exit;
+		
 		$this->render("view", ["cnt" => $data, "startPage" => $startPage, "totalPage" => $totalPage, "user" => $user]);
 	}
 
@@ -38,8 +37,7 @@ class ViewController extends MasterController {
 	}
 
 	public function viewLook() {
-		// var_dump($_GET["num"]);
-		// exit;
+
 		$num = $_GET["num"];
 
 		$sql = "SELECT `email`, `pay`, `username`, `id` FROM fundlist AS f, investor AS i WHERE f.number = i.fundnumber AND f.number = ? ";
@@ -56,13 +54,15 @@ class ViewController extends MasterController {
 		$sql = "INSERT INTO `business` (SELECT * FROM `fundlist` WHERE fundlist.number = ?)";
 		$list = DB::fetch($sql, [$num]);
 
-		// $sql2 = "DELETE FROM `fundlist` WHERE fundlist.number = ?";
-		// $list2 = DB::fetch($sql, [$num]);
+		
+		$sql3 = "SELECT * FROM fundlist WHERE fundlist.number = ?";
+		$list3 = DB::fetch($sql3, [$num]);
+		$sql3 = "UPDATE `userlist` SET `money` = `money` + ? WHERE userlist.name = ?";
+		$list3 = DB::fetch($sql3, [$list3->current, $list3->owner]);
 
-		// $sql3 = "SELECT * FROM fundlist WHERE fundlist.number = ?";
-		// $list3 = DB::fetch($sql3, [$num]);
-		// $sql3 = "UPDATE `userlist` SET `money` = `money` + ? WHERE userlist.name = ?";
-		// $list3 = DB::fetch($sql3, [$list3->current, $list3->owner]);
+		$sql2 = "DELETE FROM `fundlist` WHERE fundlist.number = ?";
+		$list2 = DB::fetch($sql, [$num]);
+
 
 		DB::msgAndBack("모집완료된 펀드가 사업으로 추가되었습니다.");
 	}
@@ -73,19 +73,13 @@ class ViewController extends MasterController {
 		$sql = "SELECT investor.email, investor.pay FROM investor WHERE investor.fundnumber = ?";
 		$list = DB::fetchAll($sql, [$num]);
 
-		// echo "<prev>";
-		// var_dump($list);
-		// echo "</prev>";
-
 		foreach ($list as $item) {
-			var_dump($item->email);
-			// UPDATE `userlist` SET userlist.money = userlist.money + 140 WHERE userlist.email = "asdf"
 			$sql2 = "UPDATE `userlist` SET userlist.money = userlist.money + ? WHERE userlist.email = ?";
 			$list2 = DB::query($sql2, [$item->pay,$item->email]);
 		}
 
-		// $sql3 = "DELETE FROM `fundlist` WHERE fundlist.number = ?";
-		// $list3 = DB::fetch($sql3, [$num]);
+		$sql3 = "DELETE FROM `fundlist` WHERE fundlist.number = ?";
+		$list3 = DB::fetch($sql3, [$num]);
 
 		DB::msgAndBack("해당 펀드가 모집해제되어 해당 투자금이 반환되었습니다.");
 	}

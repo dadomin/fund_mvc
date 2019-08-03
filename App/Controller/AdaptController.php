@@ -26,10 +26,11 @@ class AdaptController extends MasterController {
 		$name = $_POST['fundname'];
 		$enddate = $_POST['enddate'];
 		$total = $_POST['total'];
+		$sub = $_POST['sub'];
 		$user = $_SESSION['user'];
 		
-		$sql = "INSERT INTO `fundlist`(`number`, `name`, `endDate`, `total`, `current`, `owner`) VALUES (?,?,?,?,?,?)";
-		$list = DB::query($sql, [$number, $name, $enddate, $total, 0, $user->name]);
+		$sql = "INSERT INTO `fundlist`(`number`, `name`, `endDate`, `total`, `current`, `owner`, `sub`) VALUES (?,?,?,?,?,?,?)";
+		$list = DB::query($sql, [$number, $name, $enddate, $total, 0, $user->name, $sub]);
 
 		if(!$list){
 			DB::msgAndBack("등록실패");
